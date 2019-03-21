@@ -1,0 +1,49 @@
+<!--index.wxml-->
+<view class="mine-container">
+  <view class='mine-header theme-bgr {{loginState?"mine-header-plus":""}}'>
+    <block wx:if="{{loginState}}">
+      <view class='user-info-plus'>
+        <view class='header-image-plus'>
+          <image src='{{userInfo.avatarUrl}}'/>
+        </view>
+        <view class='username-plus'>
+          <text>{{userInfo.userName}} | </text>
+            <text bindtap='tapExit'>退出</text>
+        </view>
+        <view class='otherinfo-plus'>
+          <view>
+            <text>等级</text>
+            <text>{{userInfo.info.rank_name}}</text>
+          </view>
+          <view>
+            <text>积分</text>
+            <text>{{userInfo.info.integral}}</text>
+          </view>
+          <view>
+            <text>邀请码</text>
+            <text>{{userInfo.info.invide_code}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class='login-wrapper'>
+        <view class='login-tip'>
+          <text>请先登录!</text>
+        </view>
+        <view class='login-btn' bindtap='tapLogin'>
+          <text>登录/注册</text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class='mine-group' wx:for="{{mineManager}}" wx:key="key" wx:for-index="index">
+    <view class='mine-item' catchtap='tapMine' data-index="{{index}}">
+      <view>
+        <image src='{{"/images/svg/"+item.svg}}'/>
+        <text>{{item.name}}</text>
+      </view>
+      <image src='/images/svg/arrow-right.svg'/>
+    </view>
+  </view>
+</view>

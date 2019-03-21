@@ -1,0 +1,38 @@
+/**index.wxss**/
+.present-amout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  height: 160rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.present-amout>text:first-child {
+  font-size: 36rpx;
+  color: #999;
+  margin-left: 30rpx;
+}
+.present-amout>text:last-child {
+  font-size: 60rpx;
+  margin-right: 30rpx;
+}
+.present-wrapper {
+  border-bottom: 1rpx solid #ccc;
+  padding: 20rpx 30rpx 30rpx 30rpx;
+}
+.present-wrapper>view {
+  margin-top: 10rpx;
+}
+.present-wrapper>view>text:first-child {
+  display: inline-block;
+  width: 166rpx;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  color: #999;
+}
+.present-wrapper>view>text:last-child {
+  font-size: 32rpx;
+  line-height: 32rpx;
+  color: #555;
+}

@@ -1,0 +1,23 @@
+  <form bindsubmit="{{isHandle?null:'modifySubmit'}}">
+    <view class="form-list">
+      <view class="form-item">
+          <view class="form-item-hd">原密码：</view>
+          <view class="form-item-bd">
+              <input type="password" placeholder-class="input-placeholder" name="oldPwd" placeholder="原密码" maxlength="16" value='{{pwd_info}}'/>
+          </view>
+      </view>
+      <view class="form-item">
+          <view class="form-item-hd">新密码：</view>
+          <view class="form-item-bd">
+              <input type="password" placeholder-class="input-placeholder" name="newPwd" placeholder="新密码" maxlength="16" value='{{pwd_info}}'/>
+          </view>
+      </view>
+      <view class="form-item">
+          <view class="form-item-hd">确认密码：</view>
+          <view class="form-item-bd">
+              <input type="password" placeholder-class="input-placeholder" name="confirmPwd" placeholder="确认密码" maxlength="16" value='{{pwd_info}}'/>
+          </view>
+      </view>
+    </view>
+    <button formType="submit" class="nextStep-btn theme-bgr {{isHandle?'opacity-8':''}}">{{isHandle?'修改中...':'确认修改'}}</button>
+</form>

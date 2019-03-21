@@ -1,0 +1,25 @@
+<!--index.wxml-->
+<view class="allOrder-container">
+  <block wx:if="{{!isLoading}}">
+    <view class='integral-wrapper'>
+      <block wx:for="{{homeInformation}}" wx:for-index="index" wx:key="key">
+        <view class='integral-item'>
+          <view class='integral-item-left'>
+            <text>{{item.user_name}}</text>
+            <text>{{item.add_time}}</text>
+          </view>
+          <view class='integral-item-right'>
+            <text class='theme-txr'>{{'+'+item.integral}}</text>
+          </view>
+        </view> 
+      </block>
+    </view>
+  </block>
+  <block wx:if="{{!isLoading}}">
+    <block wx:if="{{!homeInformation||(homeInformation&&homeInformation.length==0)}}">
+      <view class='empty-order'>
+        <text>暂无下家信息...</text>
+      </view>
+    </block>
+  </block>
+</view>

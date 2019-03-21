@@ -1,0 +1,38 @@
+<!--index.wxml-->
+<view class="orderSubmit-container">
+  <view class='success-img'>
+    <image src='/images/svg/success.svg'/>
+    <text>订单提交成功!</text>
+  </view>
+  <view class='order-info'>
+    <view>
+      <text>订单号：</text>
+      <text class='order-no theme-txr active'>{{order.order.order_sn}}</text>
+    </view>
+    <view>
+      <text>配送方式：</text>
+      <text>{{order.order.shipping_name}}</text>
+    </view>
+    <view>
+      <text>支付方式：</text>
+      <text>{{order.order.pay_name}}</text>
+    </view>
+    <view>
+      <text class='payment-title'>支付说明：</text>
+      <text class='payment-desc'>{{order.order.pay_desc}}</text>
+    </view>
+    <view>
+      <text>应付金额：</text>
+      <text class='order-no theme-txr active'>{{order.amout}}</text>
+    </view>
+  </view>
+  <view class='order-bottom' style='bottom:{{isIPhoneX?"60rpx":0}}'>
+    <view bindtap='bindBack' data-index='1' class='theme-bgr'>
+      <text>返回首页</text>
+    </view>
+    <view bindtap='bindBack' data-index='4'>
+      <text>用户中心</text>
+    </view>
+  </view>
+  <view class='order-submit-iphonex' hidden='{{!isIPhoneX}}'/>
+</view>

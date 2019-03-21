@@ -1,0 +1,35 @@
+  <form bindsubmit="{{isHandle?null:'presentSubmit'}}">
+    <view class="form-list">
+      <view class="form-item">
+          <view class="form-item-hd">所提积分：</view>
+          <view class="form-item-bd">
+              <input type="number" placeholder-class="input-placeholder" name="present_integral" placeholder="请输入积分"/>
+          </view>
+      </view>
+      <view class="form-item">
+          <view class="form-item-hd">提现类型：</view>
+          <view class="form-item-bd">
+              <input type="text" placeholder-class="input-placeholder" name="present_type" value="提现类型" disabled/>
+          </view>
+      </view>
+      <view class="form-item">
+          <view class="form-item-hd">银行账号：</view>
+          <view class="form-item-bd">
+              <input type="number" placeholder-class="input-placeholder" name="bank_no" placeholder="请输入银行账号"/>
+          </view>
+      </view>
+      <view class="form-item">
+          <view class="form-item-hd">账户名称：</view>
+          <view class="form-item-bd">
+              <input type="text" placeholder-class="input-placeholder" name="no_name" placeholder="请输入账户名称"/>
+          </view>
+      </view>
+      <view class="form-item">
+          <view class="form-item-hd">银行名称：</view>
+          <view class="form-item-bd">
+              <input type="text" placeholder-class="input-placeholder" name="bank_name" placeholder="请输入银行名称"/>
+          </view>
+      </view>
+    </view>
+    <button formType="submit" class="nextStep-btn theme-bgr {{isHandle?'opacity-8':''}}">{{isHandle?'提现中...':'提 现'}}</button>
+</form>

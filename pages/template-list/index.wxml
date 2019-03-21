@@ -1,0 +1,71 @@
+<!--index.wxml-->
+<!-- 横向商品显示模板 -->
+<template name="goods-list-1">
+  <view class='goods-list-1'>
+    <block wx:for="{{list}}" wx:key="unique">
+      <view class='index-goods-item' bindtap='tapGoods' data-id='{{item.id || item.goods_id}}'>
+        <view class='goods-image-box'>
+          <image src="{{item.thumb||item.goods_thumb}}"/>
+        </view>
+        <view class='goods-info-box'>
+          <text>{{item.name}}</text>
+          <view>
+            <view><text>订购价：</text><text class='theme-txr'>{{item.shop_price}}</text></view>
+            <text hidden="{{item.market_price==''}}">电商同款：{{item.market_price}}</text>
+          </view>
+          <view class='goods-num' catchtap="preventTransmission">
+            <block wx:if="{{item.goods_number>0}}">
+              <view catchtap='{{item.goods_number<1?null:"reduceOrderNum"}}' data-id="{{item.id||item.goods_id}}" data-number="{{item.goods_number}}" data-goodsindex="{{goodsindex}}" class="theme-bdr" style="left:0;">
+                <text class='theme-txr'>-</text>
+              </view>
+            </block>
+            <input type='number' bindconfirm="confirmOrderNum" disabled value='{{item.goods_number<1?0:item.goods_number}}' hidden="{{item.goods_number<1}}"/>
+            <view catchtap='addOrderNum' data-id="{{item.id||item.goods_id}}" data-number="{{item.goods_number}}" data-goodsindex="{{goodsindex}}" class='theme-bdr' style='right:0;'>
+              <text class='theme-txr'>+</text>
+            </view>
+          </view>
+          <!-- <image src='/images/icon/cart_active.png'/> -->
+        </view>
+      </view>
+    </block>
+  </view>
+</template>
+<!-- 纵向商品显示模板 -->
+<template name="goods-list-2">
+  <view class='goods-list-2'>
+    <block wx:for="{{list}}" wx:key="unique">
+      <view class='index-goods-item' bindtap='tapGoods' data-id='{{item.id || item.goods_id}}'>
+        <view class='goods-image-box'>
+          <image src="{{item.goods_img||item.goods_thumb}}" mode='widthFix'/>
+        </view>
+        <view class='goods-info-box'>
+          <text>{{item.name}}</text>
+          <view>
+            <view><text>订购价：</text><text class='theme-txr'>{{item.shop_price}}</text></view>
+            <text hidden="{{item.market_price==''}}">电商同款：{{item.market_price}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</template>
+<!-- 快速导航 -->
+<template name="navigation-list">
+  <view class='navigation-wrapper {{isBottom?"bottomaction":""}} {{isOpen?"active":""}}'>
+    <view class='navigation-btn theme-bgr {{isOpen?"active":""}}' catchtap='tapOpen'>
+      <image src='/images/svg/open.svg' style='width:66rpx;height:66rpx;margin-bottom:8rpx;'/>
+    </view>
+    <view class='navigation-item navigation-home {{isOpen?"active":""}}' catchtap='bindNavigation' data-index="1">
+      <image src='/images/svg/home.svg' style='width: 52rpx;height: 52rpx;'/>
+    </view>
+    <view class='navigation-item navigation-category {{isOpen?"active":""}}' catchtap='bindNavigation' data-index="2">
+      <image src='/images/svg/category.svg' style='width: 48rpx;height: 48rpx;'/>
+    </view>
+    <view class='navigation-item navigation-cart {{isOpen?"active":""}}' catchtap='bindNavigation' data-index="3">
+      <image src='/images/svg/cart.svg' style='width: 54rpx;height: 54rpx;'/>
+    </view>
+    <view class='navigation-item navigation-mine {{isOpen?"active":""}}' catchtap='bindNavigation' data-index="4">
+      <image src='/images/svg/mine.svg' style='width: 48rpx;height: 48rpx;'/>
+    </view>
+  </view>
+</template>

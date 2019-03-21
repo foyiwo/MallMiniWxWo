@@ -1,0 +1,105 @@
+<!--index.wxml-->
+<view class="glist-container">
+  <!-- 头部 -->
+  <view class='glist-header'>
+    <view class='header-input-container'>
+      <input placeholder='请输入搜索关键词{{openStatus.ballBottom}}' placeholder-style='text-align:center;' type='text' bindinput='bindSearchContent' value='{{keywords}}' bindconfirm='tapSearch' confirm-type='search'/>
+    </view>
+    <view class='header-search-container' bindtap='tapSearch'>
+      <image src='/images/icon/search.png'/>
+    </view>
+  </view>
+  <!-- 导航 -->
+  <view class='glist-nav'>
+    <block wx:for="{{['所有分类','品牌','综合排序']}}" wx:key="index">
+      <view class='glist-nav-item theme-txr {{navIndex==index?"active":""}}' bindtap='tapNav' data-index="{{index}}">
+        <text>{{item}}</text>
+      </view>
+    </block>
+  </view>
+  <view style='height:170rpx;'/>
+  <!-- 内容 -->
+  <view class='goods-wrapper'>
+    <block wx:if="{{goodsDatas.list.length > 0}}">
+      <view class='goods-title'>
+        <text class='theme-txr'>{{quotedTime}}</text>
+        <text class='theme-txr'>{{catName?catName:''}}</text>
+      </view>
+      <!-- 商品展示 -->
+      <import src="../template-list/index.wxml"/>
+      <template is="goods-list-1" data="{{...goodsDatas}}"/>
+      <view class='foot-tip' wx:if="{{footState!=0}}">
+        <image src='/images/svg/loading.svg' wx:if="{{footState==2}}"/>
+        <text>{{footState==1?"没有更多了":footState==2?"加载中...":""}}</text>
+      </view>
+    </block>
+    <block wx:else>
+      <!-- 无商品 -->
+      <view hidden='{{isLoading}}' class='empty-list'>
+        <text>没有该系列商品!</text>
+      </view>
+    </block>
+  </view>
+</view>
+<!-- 遮罩层 -->
+<view class='mask-container {{navIndex>-1?"active":null}}' bindtap="tapMask">
+</view>
+<!-- 分类模板 -->
+<view class='category-wrapper' animation="{{animationCategory}}">
+  <view class='category-left'>
+    <scroll-view scroll-y style="height: 100%;">
+      <block wx:for="{{categoryData}}" wx:for-index="index" wx:key="key">
+        <view class='category-left-item  {{index==categoryIndex?"active":null}}'
+          data-id="{{item.id}}" data-index="{{index}}" bindtap='tapCategory'>
+            <text class='theme-bgr {{index==categoryIndex?"active":null}}'>{{item.name}}</text>
+          </view>
+      </block>
+    </scroll-view>
+  </view>
+  <view class='category-right'>
+    <scroll-view scroll-y style="height: 100%;">
+      <block wx:for="{{categoryData}}" wx:for-index="i" wx:key="unique">
+          <view style='display: {{categoryIndex==i?"block":"none"}}'>
+            <block wx:for="{{categoryData[i].cat_id}}" wx:for-index="j" wx:key="key">
+              <view class='category-right-item'>
+                <view class='category-right-title'>
+                  <text>{{item.name}}</text>
+                </view>
+                <view class='category-right-goods'>
+                  <block wx:for="{{item.cat_id}}" wx:for-item="temp" wx:for-index="k" wx:key="keyTemp">
+                    <view class='category-right-goods-item' bindtap='tapGoodsList' data-id="{{temp.id}}">
+                      <image src='{{temp.cat_image}}'/>
+                      <text>{{temp.name}}</text>
+                    </view>
+                  </block>
+                </view>
+              </view>
+            </block>
+          </view>
+        </block>
+    </scroll-view>
+  </view>
+</view>
+<!-- 品牌 -->
+<view class='brand-wrapper' animation="{{animationBrand}}">
+  <scroll-view scroll-x style="width: 100%;" class='brand-sw'>
+    <block wx:for="{{brandDatas}}" wx:for-index="index" wx:key="key">
+      <view class='brand-item' bindtap='tapBrand' data-bid="{{item.brand_id}}">
+        <image src='{{item.brand_img}}'/>
+        <text>{{item.brand_name}}</text>
+      </view>
+    </block>
+  </scroll-view>
+</view>
+<!-- 综合排序 -->
+<view class='order-wrapper' animation="{{animationOrder}}">
+  <block wx:for="{{['销量','人气','价格']}}" wx:key="key" wx:for-index="index">
+    <view class='order-item theme-txr {{orderIndex==index?"active":null}}' bindtap='tapOrder' data-index="{{index}}">
+      <text>{{item}}</text>
+      <image src='{{orderIndex==index?"/images/svg/arrow-active.svg":"/images/svg/arrow.svg"}}' class='{{orderDesc=="desc"?"active":null}}'/>
+    </view>
+  </block>
+</view>
+<!-- 快速导航 -->
+<import src="../template-list/index.wxml"/>
+<template is="navigation-list" data="{{...openStatus}}"/>

@@ -1,0 +1,191 @@
+/**index.wxss**/
+.order-info {
+  padding: 20rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.order-info>view>text {
+  font-size: 32rpx;
+  color: #555;
+}
+.order-info>view>text:last-child {
+  color: #000;
+  display: inline-block;
+  margin-left: 6rpx;
+}
+/* 商品列表 */
+.goods-item {
+  width: 100%;
+  height: 220rpx;
+  border-bottom: 1rpx dotted #ccc;
+  display: flex;
+  flex-direction: row;
+}
+.item-left {
+  width: 250rpx;
+  height: 220rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.item-left>image {
+  width: 160rpx;
+  height: 160rpx;
+}
+.item-right {
+  flex: 1;
+  overflow: hidden;
+}
+.goods-name {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 12rpx;
+  color: #555;
+}
+.goods-name>text {
+  font-size: 32rpx;
+}
+.goods-info {
+  color: #555;
+}
+.goods-info>text {
+  font-size: 27rpx;
+}
+.goods-count {
+  margin-top: 20rpx;
+}
+.goods-count>text:first-child {
+  font-size: 27rpx;
+  color: #555;
+}
+.goods-count>text:last-child {
+  font-size: 32rpx;
+}
+.cancle_btn {
+  width: 100%;
+  height: 80rpx;
+  background-color: #ffa500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 16rpx solid #efeff4;
+  border-bottom: 16rpx solid #efeff4;
+}
+.cancle_btn>text {
+  font-size: 32rpx;
+  color: #fff;
+}
+/* 用户信息 */
+.userInfo-item {
+  margin: 0 24rpx;
+  border-bottom: 1rpx solid #ccc;
+  display: flex;
+}
+.userInfo-item>text:first-child {
+  font-size: 32rpx;
+  color: #555;
+  line-height: 80rpx;
+}
+.userInfo-item>text:last-child {
+  font-size: 32rpx;
+  color: #333;
+  margin-left: 16rpx;
+  line-height: 80rpx;
+}
+.address-item {
+  padding: 24rpx 0;
+  display: flex;
+}
+.address-item>text:first-child {
+  line-height: 32rpx;
+  display: inline-block;
+  width: 140rpx;
+}
+.address-item>text:last-child {
+  flex: 1;
+  display: inline-block;
+  line-height: 36rpx;
+}
+.goodsPrice-wrapper {
+  text-align: right;
+  font-size: 32rpx;
+  color: #555;
+  padding: 24rpx 20rpx;
+  border-bottom: 6rpx solid #efeff4;
+}
+/* 支付方式 */
+.payment-item {
+  margin: 0 24rpx;
+  border-bottom: 1rpx solid #ccc;
+  display: flex;
+}
+.payment-item>text:first-child {
+  font-size: 32rpx;
+  color: #555;
+  line-height: 80rpx;
+}
+.payment-item>text:last-child {
+  font-size: 32rpx;
+  color: #222;
+  line-height: 80rpx;
+}
+.payment-change {
+  padding: 24rpx 20rpx;
+  border-bottom: 6rpx solid #efeff4;
+}
+.change-title>text {
+  font-size: 32rpx;
+  color: #555;
+}
+.change-item {
+  border: 1rpx solid #ccc;
+  border-radius: 6rpx;
+  display: inline-block;
+  padding: 3rpx 10rpx 8rpx;
+  margin-top: 12rpx;
+}
+.change-item>text {
+  font-size: 32rpx;
+  color: #222;
+  line-height: 32rpx;
+}
+.payment-true {
+  background-color: #ffa500;
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12rpx;
+  border-radius: 6rpx;
+}
+.payment-true>text {
+  color: #fff;
+  font-size: 32rpx;
+}
+.payment-detail {
+  padding: 20rpx 0;
+  margin: 0 20rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.payment-detail>text {
+  font-size:32rpx;
+  color:#555;
+}
+/* 微信支付 */
+.wechat-pay {
+  width: 100%;
+  text-align: center;
+  margin: 30px 0;
+}
+.wechat-pay>text {
+  font-size: 32rpx;
+  display: inline-block;
+  height: 68rpx;
+  line-height: 66rpx;
+  width: 178rpx;
+  border-radius: 10rpx;
+  color: #fff;
+  background-color: #32cd32;
+}

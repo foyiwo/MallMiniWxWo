@@ -1,0 +1,30 @@
+<!--index.wxml-->
+<view class="attenCategory-container" style='padding-bottom: {{isIPhoneX?"120rpx":"100rpx"}}'>
+  <!-- 全部分类 -->
+  <view class='list-wrapper'>
+    <block wx:if="{{isFetchCategory}}">
+      <block wx:for="{{categoryDatas}}" wx:key="key" wx:for-index="indexOne">
+        <block wx:for="{{categoryDatas[indexOne].cat_id}}" wx:key="keyTemp" 
+            wx:for-index="indexTwo" wx:for-item="temp">
+          <view class='list-header'>
+            <text>{{temp.name}}</text>
+          </view>
+          <block wx:for="{{categoryDatas[indexOne].cat_id[indexTwo].cat_id}}" wx:key="keyThree" wx:for-index="indexThree" wx:for-item="itemThree">
+            <view class='list-item {{itemThree.isSelected?"theme-bgr active":""}}' bindtap='bindAttention' hover-class='hover-list-item'
+            data-indexOne="{{indexOne}}" data-indexTwo="{{indexTwo}}" data-indexThree="{{indexThree}}">
+              <text>{{itemThree.name}}</text>
+            </view>
+          </block>
+        </block>
+      </block>  
+    </block>
+    <block wx:else>
+      <view style='width:100%;text-align:center;margin-top:24px;'>
+        <image src='/images/svg/loading.svg' style='width: 36px;height:36px;'/>
+      </view>
+    </block>
+  </view>
+</view>
+<view class='category-btn theme-bgr {{isIPhoneX?"iphonex":""}} {{isHandle?"opacity-8":""}}' bindtap='{{isHandle?null:"tapTure"}}' hidden='{{!isFetchCategory}}'>
+    <text>{{isHandle?"关注中...":"+ 关注"}}</text>
+</view>

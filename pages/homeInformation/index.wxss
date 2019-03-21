@@ -1,0 +1,59 @@
+/**index.wxss**/
+/* 积分项 */
+.integral-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 1rpx solid #ccc;
+  padding: 12rpx 20rpx;
+}
+.integral-item-left {
+  display: flex;
+  flex-direction: column;
+}
+.integral-item-left>text:first-child {
+  font-size: 32rpx;
+  color: #555;
+}
+.integral-item-left>text:last-child {
+  margin-top: 12rpx;
+  font-size: 27rpx;
+  color: #999;
+}
+.integral-item-right>text {
+  font-size: 36rpx;
+  padding-left: 16rpx;
+}
+.integral-item-right>text.active {
+  color: #b22;
+}
+/* end */
+.foot-tip {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.foot-tip>image {
+  width: 36rpx;
+  height: 36rpx;
+  vertical-align: middle;
+}
+.foot-tip>text {
+  display: inline-block;
+  margin-left: 10rpx;
+  font-size: 30rpx;
+  color: #555;
+}
+/* 空订单 */
+.empty-order {
+  padding-top: 16px;
+  width: 100%;
+  text-align: center;
+}
+.empty-order>text {
+  font-size: 32rpx;
+  color: #555;
+}

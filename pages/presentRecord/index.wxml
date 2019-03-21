@@ -1,0 +1,47 @@
+<!--index.wxml-->
+<view class="presentRecord-container">
+  <view class='presentRecord-header'>
+    <view bindtap='tapNotice'>
+      <text>公告</text>
+      <image src='/images/svg/triangle.svg' class='{{isShowNotice?"active":""}}'/>
+    </view>
+    <text bindtap='tapPresent'>提现</text>
+  </view>
+  <!-- 公告显示 -->
+  <view class='notice-wrapper' animation="{{animationNotice}}">
+    <scroll-view scroll-y style='height:420rpx;'>
+      <block wx:for="{{noticeDatas}}" wx:for-index="index" wx:key="key">
+        <view class='notice-item'>
+          <text>{{index+1}}. {{item}}</text>
+        </view>
+      </block>
+      <block wx:if="{{noticeDatas.length==0}}">
+        <view class='empty-notice'>
+          <text>暂无公告...</text>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+  <!-- 提现记录 -->
+  <view class='integral-wrapper'>
+    <block wx:for="{{presentDatas}}" wx:for-index="index" wx:key="key">
+      <view class='integral-item' bindtap='tapPresentDetail' data-index="{{index}}">
+        <view class='integral-item-left'>
+          <text>{{'订单号：'+item.order_sn}}</text>
+          <text>{{item.add_time}}</text>
+        </view>
+        <view class='integral-item-right'>
+          <text class='theme-txr'>+{{item.amount}}</text>
+        </view>
+      </view> 
+    </block>
+    </view>
+  <block wx:if="{{!isLoading}}">
+    <block wx:if="{{!presentDatas||presentDatas.length==0}}">
+      <view class='empty-order'>
+        <text>暂无提现记录...</text>
+      </view>
+    </block>
+  </block>
+</view>
+

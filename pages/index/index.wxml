@@ -1,0 +1,49 @@
+<!--index.wxml-->
+<view class='index-container'>
+  <!-- 头部 -->
+  <view class='index-header' style='background-color: rgba(255,204,102,{{headerBgOpacity}})'>
+    <view class='header-input-container' bindtap='tapSearch' style='background-color: rgba(255,255,255,{{0.4+inputBgOpacity}});'>
+      <input placeholder='请输入搜索关键词' placeholder-style='text-align:center;' type='text' disabled/>
+    </view>
+  </view>
+  <blcok wx:if="{{isLoadComplete}}">
+  <!-- 首页轮播图 -->
+    <view class='index-swiper'>
+      <swiper indicator-dots="true"
+        autoplay="true" interval="2000" duration="1000" current="0"
+        indicator-color="#e0e0e0" indicator-active-color="#5babe6"
+        circular="true" style="height: 376rpx;">
+          <block wx:for="{{swiperDatas}}" wx:key="key" wx:for-index="index">
+            <swiper-item>
+              <image mode="widthFix" src="{{httpUrl+item.ad_code}}" style='width:100%;'/>
+            </swiper-item>
+          </block>
+      </swiper>
+      <view class='index-logo'>
+        <image src='{{shopInfo.logoUrl}}'/>
+      </view>
+    </view>
+    <!-- 地址信息 -->
+    <view class='address-info'>
+      <text>{{shopInfo.shop_name}}</text>
+      <text>{{shopInfo.shop_address}}</text>
+    </view> 
+    <view class='index-wrapper'>
+      <!-- 顶部导航 -->
+      <view class='index-nav'>
+        <block wx:for="{{navData}}" wx:for-index="index" wx:key="unique">
+          <view class='index-nav-item' 
+            style='{{index<3?"border-right:0rpx #e3e3e3 solid":""}}' 
+            bindtap="tapNav" data-index="{{index}}">
+            <image src="{{httpUrl+item.pic}}"/>
+            <text>{{item.name}}</text>
+          </view>
+        </block>
+      </view>
+      <!-- 导入模板1 -->
+      <include src="template-1.wxml" wx-if="{{templateType==1}}"/>
+      <!-- 导入模板2 -->
+      <include src="template-2.wxml" wx-if="{{templateType==2}}"/>
+    </view>
+  </blcok>
+</view>

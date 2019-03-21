@@ -1,0 +1,34 @@
+<!--index.wxml-->
+<view class="allOrder-container">
+  <block wx:if="{{!isLoading}}">
+    <view class='integral-header'>
+      <view class='integral-header-left'>
+        <image src='/images/svg/my-integral.svg'/>
+      </view>
+      <view class='integral-header-right'>
+        <text>我的积分</text>
+        <text>{{info.integral}}</text>
+      </view>
+    </view>
+    <view class='integral-wrapper'>
+      <block wx:for="{{integralList}}" wx:for-index="index" wx:key="key">
+        <view class='integral-item'>
+          <view class='integral-item-left'>
+            <text>{{item.operation}}</text>
+            <text>{{item.add_time}}</text>
+          </view>
+          <view class='integral-item-right theme-txr {{item.change_integral>0?"active":""}}'>
+            <text>{{item.change_integral>0?"+"+item.change_integral:item.change_integral}}</text>
+          </view>
+        </view> 
+      </block>
+    </view>
+  </block>
+  <block wx:if="{{!isLoading}}">
+    <block wx:if="{{integralList&&integralList.length==0}}">
+      <view class='empty-order'>
+        <text>暂无积分记录...</text>
+      </view>
+    </block>
+  </block>
+</view>

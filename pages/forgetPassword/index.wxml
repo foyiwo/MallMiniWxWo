@@ -1,0 +1,38 @@
+  <form bindsubmit="{{isHandle?null:'forgetSave'}}">
+    <view class="form-list">
+      <view class="form-item">
+          <view class="form-item-hd">用户名：</view>
+          <view class="form-item-bd">
+              <input type="text" placeholder-class="input-placeholder" name="userName" placeholder="请输入用户名" maxlength="16" bindinput='inputUserName' bindblur='blurUserName'/>
+          </view>
+      </view>
+      <view class="form-item">
+          <view class="form-item-hd">手机号码：</view>
+          <view class="form-item-bd">
+              <input type="number" disabled='{{disabledPhone}}' placeholder-class="input-placeholder" name="phone" placeholder="请输入手机号" maxlength="11" value='{{phone}}' bindinput="inputPhone"/>
+          </view>
+      </view>
+      <view class="form-item">
+          <view class="form-item-hd">新密码：</view>
+          <view class="form-item-bd">
+              <input type="password" placeholder-class="input-placeholder" name="pwd" placeholder="请输入新密码" maxlength="16"/>
+          </view>
+      </view>
+      <view class="form-item">
+          <view class="form-item-hd">确认密码：</view>
+          <view class="form-item-bd">
+              <input type="password" placeholder-class="input-placeholder" name="confirmPwd" placeholder="请确认新密码" maxlength="16"/>
+          </view>
+      </view>
+      <view class="form-item">
+          <view class="form-item-hd">验证码：</view>
+          <view class="form-item-bd form-item-code">
+              <input type="number" placeholder-class="input-placeholder" name="code" placeholder="请输入验证码" maxlength="4"/>
+          </view>
+          <view class='code-wrapper {{isSendCode?"active":null}}' bindtap='{{!isSendCode?"tapSendCode":null}}'>
+            <text>{{time}}</text>
+          </view>
+      </view>
+    </view>
+    <button formType="submit" class="nextStep-btn theme-bgr {{isHandle?'opacity-8':''}}">{{isHandle?"提交中...":"提 交"}}</button>
+</form>

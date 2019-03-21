@@ -1,0 +1,76 @@
+/**index.wxss**/
+page {
+  background-color: #efeff4;
+}
+.orderSubmit-container {
+  border-top: 1rpx solid #ccc;
+}
+.success-img {
+  width: 100%;
+  background-color: #fff;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.success-img>image {
+  width: 72rpx;
+  height: 72rpx;
+  margin-right: 10rpx;
+}
+.success-img>text {
+  font-size: 32rpx;
+  color: #32cd32;
+  margin-left: 10rpx;
+}
+/* 订单信息 */
+.order-info>view {
+  padding: 12rpx 20rpx;
+}
+.order-info>view:nth-child(even) {
+  background-color: #fff;
+}
+.order-info>view>text {
+  color: #555;
+  font-size: 32rpx;
+}
+.order-info>view>text:first-child {
+  width: 168rpx;
+}
+.order-info>view>text:last-child {
+  font-weight: 500;
+}
+/* 底部订单按钮 */
+.order-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 100rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.order-bottom>view:last-child {
+  background-color: #ffa500;
+}
+.order-bottom>view {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100rpx;
+}
+.order-bottom>view>text {
+  font-size: 32rpx;
+  color: #fff;
+}
+.order-submit-iphonex {
+  position:fixed;
+  bottom:0;
+  left:0;
+  z-index:10;
+  width:100%;
+  height:60rpx;
+  background-color:#fff;
+}

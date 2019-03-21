@@ -1,0 +1,73 @@
+<form bindsubmit="{{isHandle?null:'registerSave'}}">
+    <view class="form-list">
+      <view class="form-item">
+          <view class="form-item-hd">手机：</view>
+          <view class="form-item-bd">
+              <input type="number" placeholder-class="input-placeholder" name="phone" placeholder="请输入手机号码" value='{{phone}}' maxlength="11" bindinput='inputPhone' />
+          </view>
+      </view>
+      <view class="form-item">
+          <view class="form-item-hd">密码：</view>
+          <view class="form-item-bd">
+              <input type="password" placeholder-class="input-placeholder" name="pwd" placeholder="请输入密码" maxlength="16" value="{{pwd}}" bindinput='inputPwd'/>
+          </view>
+      </view>
+
+      <view class="form-item">
+          <view class="form-item-hd">验证码：</view>
+          <view class="form-item-bd form-item-code">
+              <input type="number" placeholder-class="input-placeholder" name="code" placeholder="请输入验证码" maxlength="4"/>
+          </view>
+          <view class='code-wrapper {{isSendCode?"active":null}}' bindtap='{{!isSendCode?"tapSendCode":null}}'>
+            <text>{{time}}</text>
+          </view>
+      </view>
+      <!-- 注册类型 -->
+      <block wx:if="{{model==2}}">
+        <view class="form-item">
+            <view class="form-item-hd">注册类型：</view>
+            <view class="form-item-bd">
+              <radio-group class="radio-group" bindchange="radioChange">
+                <block wx:for="{{modelList}}" wx:for-index="index" wx:key="key">
+                  <label class="radio">
+                    <radio checked="{{item.default==1}}" value='{{index+1}}'/>
+                    <text>{{item.name}}</text>
+                  </label>
+                </block>
+              </radio-group>
+            </view>
+        </view>
+      </block>
+      <!-- 邀请码 -->
+      <view class="form-item">
+          <view class="form-item-hd">邀请码：</view>
+          <view class="form-item-bd form-item-invitationCode">
+              <input type="number" placeholder-class="input-placeholder" name="invitationCode" placeholder="请输入邀请码(非必填)"  maxlength="16" bindblur='blurInvitationCode' value='{{invitationCode}}' bindfocus="focusInvitationCode"/>
+          </view>
+          <view class='invitationCode-tip'>
+            <image src='/images/svg/loading.svg' hidden='{{!isCheckInvitationCode}}'/> 
+            <block wx:if="{{invitationCodeStatus==0}}">
+              <image src='/images/svg/fork.svg'/> 
+            </block> 
+            <block wx:if="{{invitationCodeStatus==1}}">
+              <image src='/images/svg/hook.svg'/> 
+            </block> 
+          </view>
+      </view>
+    </view>
+    <block wx:if="{{registerType==2}}">
+      <view class='register-tip'>
+        <text>*注册成为商家类型需要缴纳{{'￥'+amount}}入驻费用</text>
+      </view>
+    </block>
+    <view class="form-aggree">
+      <view>
+        <checkbox color="#b22" checked='{{isChecked}}' bindtap='tapchecked'/>
+        <text>我已看过并接受《</text>
+        <text>用户协议</text>
+        <text>》</text>
+      </view>
+      <text wx:if="{{isShare}}" bindtap='backHome'>返回首页</text>
+    </view>
+    <button formType="submit" class="nextStep-btn theme-bgr {{isHandle?'opacity-8':''}}">{{isHandle?"注册中...":registerType==1?"注册"+modelList[0].name:registerType==2?"注册"+modelList[1].name:"注 册"}}</button>
+</form>

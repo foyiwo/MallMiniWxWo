@@ -1,0 +1,7 @@
+{
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "light",
+  "navigationBarTitleText": "提现记录",
+  "navigationBarBackgroundColor": "#FF6666",
+  "navigationBarTextStyle": "white"
+}

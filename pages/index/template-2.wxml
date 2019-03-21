@@ -1,0 +1,47 @@
+<view class='index-temp-2'>
+  
+  <!-- 我的关注 -->
+  <view class='my-attention-wrapper' hidden='{{categoryDatas.length < 0}}'>
+    <block wx:for="{{categoryDatas}}" wx:key="key" wx:for-index="index">
+      <view class='mt-attention-item' bindtap='tapAttention' data-id="{{item.cat_id}}">
+        <view>
+          <image src="{{item.cat_img}}"/>
+        </view>
+        <text>
+          {{item.cat_name}}
+        </text>
+      </view>
+    </block>
+  </view>
+  <import src="../template-list/index.wxml"/>
+  <!-- 首页导航 -->
+  <view class='three-nav active' wx-if="{{isCeiling}}">
+    <block wx:for="{{['精品推荐','热销产品','新品上架']}}" wx:for-index="index" wx:key="key">
+      <view class='three-nav-item theme-bdr theme-bgr theme-txr {{currentNav==index?"active":""}}' catchtap='catchTapNav' data-index="{{index}}">
+        <text>{{item}}</text>
+      </view>
+    </block>
+  </view>
+  <view class='three-nav' id="threeNav">
+    <block wx:for="{{['精品推荐','热销产品','新品上架']}}" wx:for-index="index" wx:key="key">
+      <view class='three-nav-item theme-bdr theme-bgr theme-txr {{currentNav==index?"active":""}}' catchtap='catchTapNav' data-index="{{index}}">
+        <text>{{item}}</text>
+      </view>
+    </block>
+  </view>
+  <block wx:if="{{currentNav==0}}">
+    <view class='index-goods'>
+      <template is="goods-list-{{listTemplate}}" data="{{...bestGoodsData}}"/>
+    </view> 
+  </block>
+  <block wx:elif="{{currentNav==1}}">
+    <view class='index-recommend'>
+      <template is="goods-list-{{listTemplate}}" data="{{...hotGoodsData}}"/>
+    </view> 
+  </block>
+  <block>
+    <view class='index-recommend'>
+      <template is="goods-list-{{listTemplate}}" data="{{...newGoodsData}}"/>
+    </view>
+  </block> 
+</view>

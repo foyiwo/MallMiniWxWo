@@ -1,0 +1,48 @@
+<form bindsubmit="{{isHandle?null:'savePersonInfo'}}">
+    <view class="form-list">
+      <view class="form-item">
+          <view class="form-item-hd">收货人</view>
+          <view class="form-item-bd">
+              <input type="text" placeholder-class="input-placeholder" name="name" value="{{editData.consignee}}" placeholder="请输入姓名"/>
+          </view>
+      </view>
+      <view class="form-item">
+          <view class="form-item-hd">联系电话</view>
+          <view class="form-item-bd">
+              <input type="number" placeholder-class="input-placeholder" name="tel" value="{{editData.mobile}}" placeholder="请输入手机号码" maxlength="11"/>
+          </view>
+      </view>
+      <view class="form-item">
+          <view class="form-item-hd">收货地区</view>
+          <view class="form-item-bd">
+              <picker bindchange="changeProvince" mode="selector" range="{{provinceName}}" value="{{provinceSelIndex}}">
+                  <view class="input {{!provinceName[provinceSelIndex] ? 'input-placeholder' : ''}}">{{provinceName[provinceSelIndex] || '省份'}}</view>
+                  <input type="text" name="province" value="{{provinceName[provinceSelIndex]}}" class="hidden" disabled/>
+              </picker>
+              <picker bindchange="changeCity" mode="selector" range="{{cityName}}" value="{{citySelIndex}}" disabled="{{!cityEnabled}}">
+                  <view class="input {{!cityName[citySelIndex] ? 'input-placeholder' : ''}}">{{cityName[citySelIndex] || '城市'}}</view>
+                  <input type="text" name="city" value="{{cityName[citySelIndex]}}" class="hidden" disabled/>
+              </picker>
+              <picker bindchange="changeDistrict" mode="selector" range="{{districtName}}" value="{{districtSelIndex}}" disabled="{{! districtEnabled}}" wx:if="{{districtName.length > 0}}">
+                  <view class="input {{!districtName[districtSelIndex] ? 'input-placeholder' : ''}}">{{districtName[districtSelIndex] || '区县'}}</view>
+                  <input type="text" name="district" value="{{districtName[districtSelIndex]}}" class="hidden" disabled/>
+              </picker>
+          </view>
+      </view>
+      <view class="form-item">
+          <view class="form-item-hd">详细地址</view>
+          <view class="form-item-bd">
+              <input type="text" placeholder-class="input-placeholder" name="address" value="{{editData.address}}" placeholder="请输入详细地址" maxlength="20"/>
+          </view>
+      </view>
+    </view>
+    <block wx:if="{{type=='default'}}">
+      <button formType="submit" class="save-btn">配送至该收货地址</button>
+    </block>
+    <block wx:else>
+      <button formType="submit" class="save-btn">{{isEdit&&isHandle?"保存中...":isEdit&&!isHandle?"保存":!isEdit&&isHandle?"提交中...":!isEdit&&!isHandle?"提交":""}}</button>
+      <button class="delete-btn" bindtap="{{isHandle?null:'deleteEvent'}}" hidden='{{!isEdit}}'>删除收货地址</button>
+      <button class="cancle-btn" bindtap="cancleEvent">取消</button>
+    </block>
+</form>
+<view class="message {{showMessage ? 'fade-in' : ''}}" hidden="{{!showMessage}}">{{messageContent}}</view>

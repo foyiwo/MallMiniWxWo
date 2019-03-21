@@ -1,0 +1,42 @@
+<!--index.wxml-->
+<view class='category-container'>
+  <!-- 分类内容 -->
+  <view class='category-wrapper'>
+    <view class='category-left'>
+      <scroll-view scroll-y style="height: {{(windowHeight*2)+'rpx'}}">
+        <block wx:for="{{categoryData}}" wx:for-index="index" wx:key="key">
+          <view class='category-left-item {{index==categoryIndex?"theme-txr active":null}}'
+          data-id="{{item.id}}" data-index="{{index}}" bindtap='tapCategory'>
+            <block wx:if="{{index==categoryIndex}}">
+              <view class='category-left-line theme-bgr'/>
+            </block>
+            <text>{{item.name}}</text>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+    <view class='category-right'>
+      <scroll-view scroll-y style="height: {{(windowHeight*2)+'rpx'}}">
+        <block wx:for="{{categoryData}}" wx:for-index="i" wx:key="unique">
+          <view style='display: {{categoryIndex==i?"block":"none"}}'>
+            <block wx:for="{{categoryData[i].cat_id}}" wx:for-index="j" wx:key="key">
+              <view class='category-right-item'>
+                <view class='category-right-title'>
+                  <text>{{item.name}}</text>
+                </view>
+                <view class='category-right-goods'>
+                  <block wx:for="{{item.cat_id}}" wx:for-item="temp" wx:for-index="k" wx:key="keyTemp">
+                    <view class='category-right-goods-item' bindtap='tapGoodsList' data-id="{{temp.id}}">
+                      <image src='{{temp.cat_image}}'/>
+                      <text>{{temp.name}}</text>
+                    </view>
+                  </block>
+                </view>
+              </view>
+            </block>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+</view>

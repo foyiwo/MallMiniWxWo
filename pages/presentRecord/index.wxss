@@ -1,0 +1,113 @@
+/**index.wxss**/
+.presentRecord-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100rpx;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #ccc;
+}
+.presentRecord-header>view {
+  font-size: 36rpx;
+  color: #222;
+  margin-left: 30rpx;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.presentRecord-header>view>image {
+  width: 42rpx;
+  height: 42rpx;
+  margin-left: 6rpx;
+  margin-top: 6rpx;
+  transition: all .3s ease-out;
+  -webkit-transition: all .3s ease-out;
+}
+.presentRecord-header>view>image.active {
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+}
+.presentRecord-header>text {
+  margin-right: 30rpx;
+  font-size: 32rpx;
+  line-height: 66rpx;
+  display: inline-block;
+  width: 160rpx;
+  height: 66rpx;
+  border-radius: 12rpx;
+  background-color: #32cd32;
+  color: #fff;
+  text-align: center;
+}
+/* 通知 */
+.notice-wrapper {
+  position: fixed;
+  top: 100rpx;
+  left: 0;
+  width: 100%;
+  z-index: 9;
+  background-color: #fff;
+  height: 420rpx;
+  transform: translateY(-100%);
+  -webkit-transform: translateY(-100%);
+  opacity: 0;
+}
+.notice-item {
+  padding: 16rpx 20rpx;
+  font-size: 36rpx;
+  color: #555;
+}
+.empty-notice {
+  padding-top: 112rpx;
+  text-align: center;
+  color: #555;
+  font-size: 36rpx;
+}
+/* 提现列表 */
+.integral-wrapper {
+  margin-top: 100rpx;
+}
+.integral-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  margin-bottom: 1rpx;
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.integral-item-left {
+  display: flex;
+  flex-direction: column;
+}
+.integral-item-left>text:first-child {
+  font-size: 32rpx;
+  color: #555;
+}
+.integral-item-left>text:last-child {
+  margin-top: 12rpx;
+  font-size: 27rpx;
+  color: #999;
+}
+.integral-item-right>text {
+  font-size: 36rpx;
+  padding-left: 16rpx;
+}
+/* 空提现记录 */
+.empty-order {
+  padding-top: 36px;
+  width: 100%;
+  text-align: center;
+}
+.empty-order>text {
+  font-size: 32rpx;
+  color: #555;
+}

@@ -1,0 +1,108 @@
+<block wx:if="{{!isLoading}}">
+  <view class='detail-container' style='padding-bottom: {{isIPhoneX?"160rpx":"100rpx"}}'>
+    <view>
+      <view id='detailCount'>
+        <swiper indicator-dots="true"
+          autoplay="true" interval="2000" duration="1000" current="{{currentSwiper}}"
+          indicator-color="#e0e0e0" indicator-active-color="#5babe6"
+          circular="true" style="height: 750rpx;">
+          <block wx:if="{{swiperShoppingData.length > 0}}">
+            <block wx:for="{{swiperShoppingData}}" wx:key="key" wx:for-index="index">
+              <swiper-item>
+                <image mode="widthFix" src="{{item.img_url}}" style='width:100%;'
+                data-index="{{index}}" data-group="1" bindtap='previewImage'/>
+              </swiper-item>
+            </block>
+          </block>
+          <block wx:else>
+            <swiper-item>
+                <image mode="widthFix" src="{{goods.goods_img}}" style='width:100%;'
+                data-index="{{index}}" data-group="1" bindtap='previewImage'/>
+            </swiper-item>
+          </block>
+        </swiper>
+        <view class='goods-info'>
+          <view class='goods-name'>
+            <text class='theme-txr'>{{goods.goods_name}}</text>
+          </view>
+          <button class='share-container' id="shareBtn" open-type="share" type="primary" plain>
+            <image src='/images/icon/share.png'/>
+            <text class='theme-txr'>分享</text>
+          </button>
+        </view>
+        <!-- 商品其他信息 -->
+        <view class='goods-else-info'>
+          <text class='goods-sn'>商品货号：{{goods.goods_sn}}</text>
+          <text class='goods-market_price' hidden="{{goods.market_price==''}}">电商同款：{{goods.market_price}}</text>
+        </view>
+        <!-- 商品价格数量 -->
+        <view class='goods-price-num-container' wx:for="{{goodList}}" wx:for-index="index" wx:key="key">
+          <view class='company-name'>
+            <text>订购价格</text>
+          </view>
+          <view class='goods-price-num'>
+            <view class='goods-price'>
+              <text class='theme-txr'>{{item.shop_price_formated}}</text>
+            </view>
+            <view class='goods-num' style='justify-content: {{orderNum<1?"flex-end":"space-between"}}'>
+              <block wx:if="{{orderNum>0}}">
+                <view class='theme-txr theme-bdr {{orderNum==1?"opacity-6":""}}' bindtap='{{orderNum<1?null:"tapReduceNum"}}'>
+                  <text>-</text>
+                </view>
+              </block>
+              <picker range='{{strRangeNum}}' mode='selector' value='{{orderNum-1}}' bindchange='changeOrderNum' data-oldValue='{{orderNum}}'>
+                <input type='number' value='{{orderNum<1?0:orderNum}}' style="width: 120rpx;" hidden="{{orderNum<1}}" disabled/>
+              </picker>
+              <view class='theme-txr theme-bdr {{orderNum==99?"opacity-6":""}}' bindtap='{{orderNum<=99?"tapAddNum":null}}'>
+                <text>+</text>
+              </view>
+            </view> 
+          </view>
+        </view>
+        <!-- 商品规格 -->
+        <block wx:for="{{aliasData}}" wx:key="key" wx:for-index="index">
+          <view class='goods-specifications'>
+            <view class='specification-title'>
+              <text>{{item.category}}</text>
+            </view>
+            <block wx:for="{{item.value}}" wx:key="keyTemp" wx:for-index="indexTemp" wx:for-item="temp">
+              <view class='specification-item {{temp.is_on_sale==0?"disabled":temp.value==currentAlias[index].alias_value?"active":null}}' data-url="{{temp.url}}" bindtap='{{temp.is_on_sale==0?null:temp.value==currentAlias[index].alias_value?null:"tapType"}}' hover-class='{{temp.is_on_sale==0?null:temp.value==currentAlias[index].alias_value?null:"hover-tap"}}'>
+                <text>{{temp.value}}</text>
+              </view>
+            </block>
+          </view>
+        </block>
+        <!-- 商品属性 -->
+        <view class='goods-attr-container'>
+          <view class='goods-attr-title'>
+            <text>商品属性</text>
+          </view>
+          <block wx:for="{{properties}}" wx:key="key" wx:for-index="index">
+            <view class='goods-attr-item'>
+              <text>{{item.name}}:</text>
+              <text>{{item.value}}</text>
+            </view>
+          </block>
+        </view>
+      </view>
+      <!-- 商品描述 -->
+      <import src="/wxParse/wxParse.wxml"/>
+      <view class='goods-desc-container'>
+        <view class='goods-desc-title'>
+          <text>商品描述</text>
+        </view>
+        <template is="wxParse" data="{{wxParseData:desc.nodes}}"/>
+      </view>
+    </view>
+  </view>
+  <view class='join-cart-wrapper {{isIPhoneX?"iphonex":""}}'>
+    <picker range='{{strRangeNum}}' mode='selector' value='{{orderNum==0?0:orderNum-1}}' bindchange='changeOrderNum' data-oldValue='{{orderNum}}'>
+      <text>加入购物车</text>
+    </picker>
+    <text class='theme-bgr' catchtap='tapSettlement'>立即结算{{loginState&&cartNum!=''?'('+cartNum+')':''}}</text>
+  </view>
+  <view class='iphonex-location' hidden="{{!isIPhoneX}}"/>
+  <!-- 快速导航 -->
+  <import src="../template-list/index.wxml"/>
+  <template is="navigation-list" data="{{...openStatus}}"/>
+</block>

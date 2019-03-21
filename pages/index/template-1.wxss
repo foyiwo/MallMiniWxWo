@@ -1,0 +1,113 @@
+@import "../template-list/index.wxss";
+/* 限时特价 */
+.index-temp-1 .index-specialOffer {
+  position: relative;
+  height: 80rpx;
+  width: 100%;
+  background-color: rgba(0,0,0,.1);
+}
+.index-temp-1 .index-title-before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 22.5rpx;
+  height: 80rpx;
+}
+.index-temp-1 .specialOffer-title>text:nth-of-type(1) {
+  color: #555;
+  font-size: 32rpx;
+  font-weight: bold;
+  line-height: 80rpx;
+  margin-left: 52.5rpx;
+}
+.index-temp-1 .specialOffer-navbar-container {
+  width: 100%;
+  height: 270px;
+  background-color: #ff1010;
+  overflow: hidden;
+}
+.index-temp-1 .specialOffer-navbar {
+  display: flex;
+  white-space: nowrap;
+}
+.index-temp-1 .specialOffer-box {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 187.5rpx;
+  height: 270rpx;
+}
+.index-temp-1 .specialOffer-box>image {
+  width: 150rpx;
+  height: 150rpx;
+  margin: 0 auto;
+  background-color: #efeff4;
+}
+.index-temp-1 .specialOffer-box>text:nth-of-type(1) {
+  height: 40rpx;
+  line-height: 40rpx;
+  width: auto;
+  padding: 0 20rpx;
+  font-size: 20rpx;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  color: #555;
+}
+.index-temp-1 ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.index-temp-1 .specialOffer-box>text:nth-of-type(2) {
+  margin: 0 auto;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+/* 我的关注 */
+.index-temp-1 .my-attention-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  border-top: 1rpx solid #ccc;
+}
+.index-temp-1 .mt-attention-item {
+  width: 25%;
+  border-right: 1rpx solid #ccc;
+  border-bottom: 1rpx solid #ccc;
+  box-sizing: border-box;
+  height: 210rpx;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.index-temp-1 .mt-attention-item>view {
+  width: 128rpx;
+  height: 128rpx;
+  background-color: #efeff4;
+}
+.index-temp-1 .mt-attention-item>view>image {
+  width: 100%;
+  height: 100%;
+}
+.index-temp-1 .mt-attention-item>text {
+  color: #555;
+  font-size: 23rpx;
+  line-height: 23rpx;
+}
+/*商品数据*/
+.index-temp-1 .index-goods {
+  width: 100%;
+}
+.index-temp-1 .index-goods-title {
+  width: 100%;
+  position: relative;
+}
+.index-temp-1 .index-goods-title>text {
+  color: #555;
+  font-size: 32rpx;
+  font-weight: bold;
+  line-height: 80rpx;
+  margin-left: 52.5rpx;
+}

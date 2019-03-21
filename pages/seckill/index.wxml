@@ -1,0 +1,139 @@
+<!--index.wxml-->
+<view class='index-container' wx:if="{{isLoadComplete}}">
+  <!-- 头部 -->
+  <view class="index-header">
+    <view class='{{current_periods==0?"active":""}}  {{!this_periods&&!this_next_periods?"disabled":""}}' bindtap='{{!this_periods&&!this_next_periods?null:"handleTap"}}' bindtap='{{!this_periods&&!this_next_periods?null:"handleTap"}}' data-index="0">
+      <text>{{oneTime}}</text>
+    </view>
+    <view class='{{current_periods==1?"active":""}} {{!next_periods&&!next_next_periods?"disabled":""}}' bindtap='{{!next_periods&&!next_next_periods?null:"handleTap"}}' data-index="1">
+      <text>{{twoTime}}</text>
+    </view>
+  </view>
+  <!-- 第一场 -->
+  <block wx:if="{{current_periods==0&&(this_periods||this_next_periods)}}">
+    <view class="index-goods">
+      <view class="index-goods-tip">
+        <text>{{this_periods?'抢购中 先下单先得哦!':this_next_periods?'即将开始 先下单先得哦!':''}}</text>
+      </view>
+      <view class='goods-items' style='{{isIPhoneX?"padding-bottom:60rpx;":""}}'>
+        <block wx:if="{{this_periods}}">
+          <block wx:for="{{this_periods}}" wx:key="unique">
+            <view class='goods-item' bindtap='beginSeckill' data-gid="{{item.gid}}">
+              <view class='goods-image-box'>
+                <image src='{{item.thumb}}'/>
+              </view>
+              <view class='goods-info-box'>
+                <view>
+                  <text>{{item.name}}</text>
+                </view>
+                <view class='goods-info-bottom'>
+                  <view class='money-info'>
+                    <text>{{item.shop_price}}</text>
+                    <view catchtap='beginSeckill' class='payment-btn {{item.rate==100?"disabled":""}}' data-gid="{{item.gid}}">
+                      <text>{{item.rate==100?"已抢完":"去抢购"}}</text>
+                    </view>
+                  </view>
+                  <view class='payment-container'>
+                    <text>原价:{{item.origin_price}}</text>
+                    <view class='payment-progress'>
+                      <text>已售{{item.rate+'%'}}</text>
+                      <view class='progress-container'>
+                        <view style="width: {{item.rate+'%'}};" class='progress-wrapper'></view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </block>
+        </block>
+        <block wx:elif="{{this_next_periods}}">
+          <block wx:for="{{this_next_periods}}" wx:key="unique">
+            <view class='goods-item' bindtap='beginSeckill' data-gid="{{item.gid}}">
+              <view class='goods-image-box'>
+                <image src='{{item.thumb}}'/>
+              </view>
+              <view class='goods-info-box'>
+                <view>
+                  <text>{{item.name}}</text>
+                </view>
+                <view class='goods-info-bottom'>
+                  <view class='money-info'>
+                    <text>{{item.shop_price}}</text>
+                    <view class='remind-btn {{item.isRemind?"disabled":""}}' catchtap='{{item.isRemind?null:"handleRemind"}}' data-secid="{{item.secid}}" data-tdate="{{item.tdate}}">
+                      <text>提醒我</text>
+                    </view> 
+                  </view>
+                  <view class='remind-container'>
+                    <text>原价:{{item.origin_price}}</text>
+                    <text>{{item.isRemind?"已设置提醒":"短信通知哦!"}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </block>
+        </block>
+      </view>
+      <view class='iphonex' wx:if="{{isIPhoneX}}">
+      </view>
+    </view>
+  </block>
+  <!-- 第二场 -->
+  <block wx:if="{{current_periods==1&&(next_periods||next_next_periods)}}">
+    <view class="index-goods">
+      <view class="index-goods-tip">
+        <text>即将开始 先下单先得哦!</text>
+      </view>
+      <view class='goods-items' style='{{isIPhoneX?"padding-bottom:60rpx;":""}}'>
+        <block wx:for="{{next_periods||next_next_periods}}" wx:key="unique">
+          <view class='goods-item' bindtap='beginSeckill' data-gid="{{item.gid}}">
+            <view class='goods-image-box'>
+              <image src='{{item.thumb}}'/>
+            </view>
+            <view class='goods-info-box'>
+              <view>
+                <text>{{item.name}}</text>
+              </view>
+              <view class='goods-info-bottom'>
+                <view class='money-info'>
+                  <text>{{item.shop_price}}</text>
+                  <view class='remind-btn {{item.isRemind?"disabled":""}}' catchtap='{{item.isRemind?null:"handleRemind"}}' data-secid="{{item.secid}}" data-tdate="{{item.tdate}}">
+                    <text>提醒我</text>
+                  </view> 
+                </view>
+                <view class='remind-container'>
+                  <text>原价:{{item.origin_price}}</text>
+                  <text>{{item.isRemind?"已设置提醒":"短信通知哦!"}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+      <view class='iphonex' wx:if="{{isIPhoneX}}">
+      </view>
+    </view>
+  </block>
+  <!-- 短信提醒 -->
+  <view wx:if="{{isDialog}}" class='seckill-mask'>
+    <view class="seckill-wrapper">
+      <view class="seckill-title">
+        <text>秒杀通知</text>
+        <text bindtap='handleCloseDialog'>关闭</text>
+      </view>
+      <view class='seckill-content'>
+        <view>
+          <text>若秒杀开始,我们会提前3分钟,通过短信来通知您哦(只通知一次,请注意查收）</text>
+          <view class='seckill-input'>
+            <label>手机号码:</label>
+            <input bindinput='handleInput'/>
+          </view>
+          <view class='seckill-btn' hover-class='opacity-8' bindtap='handleRemindTrue'>
+            <text>确定</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+

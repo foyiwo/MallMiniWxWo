@@ -1,0 +1,99 @@
+/**index.wxss**/
+/* 头部我的积分 */
+.integral-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 180rpx;
+  background-color: #fff;
+  display: flex;
+}
+.integral-header-left {
+  height: 180rpx;
+  width: 200rpx;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.integral-header-left>image {
+  width: 160rpx;
+  height: 120rpx;
+}
+.integral-header-right {
+  flex: 1;
+  height: 180rpx;
+  display: inline-flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.integral-header-right>text {
+  color: #222;
+  font-size: 36rpx;
+}
+/* end */
+/* 积分项 */
+.integral-wrapper {
+  margin-top: 190rpx;
+}
+.integral-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 1rpx solid #ccc;
+  padding: 12rpx 20rpx;
+}
+.integral-item:first-child {
+  border-top: 16rpx solid #efeff4;
+}
+.integral-item-left {
+  display: flex;
+  flex-direction: column;
+}
+.integral-item-left>text:first-child {
+  font-size: 32rpx;
+  color: #555;
+}
+.integral-item-left>text:last-child {
+  margin-top: 12rpx;
+  font-size: 27rpx;
+  color: #999;
+}
+.integral-item-right {
+  color: #555;
+}
+.integral-item-right>text {
+  font-size: 36rpx;
+  padding-left: 16rpx;
+}
+/* end */
+.foot-tip {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.foot-tip>image {
+  width: 36rpx;
+  height: 36rpx;
+  vertical-align: middle;
+}
+.foot-tip>text {
+  display: inline-block;
+  margin-left: 10rpx;
+  font-size: 30rpx;
+  color: #555;
+}
+/* 空订单 */
+.empty-order {
+  padding-top: 16px;
+  width: 100%;
+  text-align: center;
+}
+.empty-order>text {
+  font-size: 32rpx;
+  color: #555;
+}

@@ -1,0 +1,83 @@
+/* 底部快速导航图标 */
+.navigation-wrapper {
+  position: fixed;
+  z-index:20;
+  bottom: 160rpx;
+  right: 24rpx; 
+  background-color:rgba(0,0,0,0);
+  width: 96rpx;
+  height: 96rpx;
+  overflow:visible;
+  transition: all ease-out .3s;
+  -webkit-transition: all ease-out .3s;
+}
+.navigation-wrapper.bottomaction {
+  bottom: 115rpx;
+}
+.navigation-wrapper.active {
+  bottom: 160rpx;
+}
+.navigation-btn {
+  position: absolute;
+  z-index: 21;
+  bottom: 0;
+  right:0;
+  width:96rpx;
+  height:96rpx;
+  border-radius:100%;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  box-shadow: 0 0 8px rgba(187,34,34,.5);
+  -webkit-box-shadow: 0 0 8px rgba(187,34,34,.5);
+  transition: all ease-out .3s;
+  -webkit-transition: all ease-out .3s;
+}
+.navigation-btn.active {
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  bottom: 0;
+}
+.navigation-item {
+  position: absolute;
+  z-index:20;
+  bottom: 0rpx;
+  right: 0rpx;
+  width:96rpx;
+  height:96rpx;
+  border-radius:100%;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  box-shadow: 0 0 8px rgba(187,34,34,.5);
+  -webkit-box-shadow: 0 0 8px rgba(187,34,34,.5);
+  opacity: 0;
+  transition: all ease-out .3s;
+  -webkit-transition: all ease-out .3s;
+}
+.navigation-home.active {
+  bottom: 136rpx;
+  right: 12rpx;
+  background-color:rgba(212,91,124,1);
+  opacity: 1;
+}
+.navigation-category.active {
+  bottom: 68rpx;
+  right: 132rpx;
+  background-color:rgba(243,166,62,1);
+  opacity: 1;
+}
+.navigation-cart.active {
+  bottom: -52rpx;
+  right: 132rpx;
+  opacity: 1;
+  background-color:rgba(114,178,214,1);
+}
+.navigation-mine.active {
+  bottom: -120rpx;
+  right: 12rpx;
+  opacity: 1;
+  background-color:rgba(227,117,102,1);
+}

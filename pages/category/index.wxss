@@ -1,0 +1,92 @@
+/**index.wxss**/
+page {
+  background-color: #f7f7f7;
+}
+/* 分类容器 */
+.category-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  border-top: 1rpx solid #eee;
+  display: flex;
+  flex-direction: row;
+}
+.category-left {
+  flex: 1;
+  height: 100%;
+  background-color: rgb(238, 238, 238);
+}
+.category-left-item {
+  position: relative;
+  width: 100%;
+  height: 100rpx;
+  text-align: center;
+  border-bottom: 1rpx solid #eee;
+  background-color: #fff;
+  color: #555;
+}
+.category-left-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100rpx;
+  width: 2rpx;
+  border-radius: 2rpx;
+}
+.category-left-item>text {
+  font-size: 28rpx;
+  font-weight: bold;
+  line-height: 100rpx;
+}
+.category-left-item.active {
+  background-color: rgb(238, 238, 238);
+}
+.category-right {
+  flex: 3;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.category-right-item {
+  padding: 0 20rpx 0 20rpx;
+}
+.category-right-title {
+  font-weight: bold;
+  font-size: 24rpx;
+  color: #555;
+  margin: 20rpx 0 20rpx 0;
+}
+.category-right-goods {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #fff;
+}
+.category-right-goods-item {
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15rpx 0 15rpx 0;
+}
+.category-right-goods-item>image {
+  width: 132rpx;
+  height: 132rpx;
+  background-color: #efeff4;
+}
+.category-right-goods-item>text {
+  width: 100%;
+  margin-top: 6rpx;
+  color: #555;
+  font-size: 20rpx;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  text-align: center;
+}

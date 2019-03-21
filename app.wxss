@@ -1,0 +1,35 @@
+/**app.wxss**/
+page {
+  font-family: "微软雅黑";
+}
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+.btn-hover-class {
+  background-color: #efeff4;
+}
+.opacity-6 {
+  opacity: .6;
+}
+.opacity-8 {
+  opacity: .8;
+}
+.theme-bgr,.theme-bgr.active {
+  background-color: #b22;
+}
+.theme-txr,.theme-txr.active {
+  color: #b22;
+}
+.theme-bdr,.theme-bdr.active {
+  border: 1rpx solid #b22;
+}
+.theme-shadow {
+  box-shadow: 0 0 10rpx #b22;
+  -webkit-box-shadow: 0 0 10rpx #b22;
+}

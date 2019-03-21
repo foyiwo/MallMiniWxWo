@@ -1,0 +1,72 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/register/index",
+    "pages/recommend/index",
+    "pages/homeInformation/index",
+    "pages/presentDetail/index",
+    "pages/present/index",
+    "pages/presentRecord/index",
+    "pages/login/index",
+    "pages/detail/index",
+    "pages/integralManager/index",
+    "pages/forgetPassword/index",
+    "pages/modifyPassword/index",
+    "pages/orderSubmit/index",
+    "pages/addressManager/index",
+    "pages/address/index",
+    "pages/cart/index",
+    "pages/search/index",
+    "pages/mine/index",
+    "pages/orderDetail/index",
+    "pages/allOrder/index",
+    "pages/goodsList/index",
+    "pages/category/index",
+    "pages/attentionCategory/index",
+    "pages/logs/logs",
+    "pages/userConsole/userConsole"
+  
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "华联教育",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#b22222",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/icon/home.png",
+        "selectedIconPath": "images/icon/home_active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/category/index",
+        "iconPath": "images/icon/category.png",
+        "selectedIconPath": "images/icon/category_active.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/cart/index",
+        "iconPath": "images/icon/cart.png",
+        "selectedIconPath": "images/icon/cart_active.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "iconPath": "images/icon/mine.png",
+        "selectedIconPath": "images/icon/mine_active.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  }
+}

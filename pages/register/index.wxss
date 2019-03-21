@@ -1,0 +1,234 @@
+picker {
+  display:inline-block;
+  width:33.3%;
+  text-align:left;
+  height: 60rpx;
+}
+.form-list {
+    position: relative;
+    margin-bottom: 27rpx;
+    width: 100%;
+}
+
+.form-list:first-child {
+    margin-top: 20rpx;
+}
+
+.form-list::before, .form-list::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    transform: scaleY(.5);
+    background-color: #e3e3e3;
+}
+
+.form-list::before {
+    top: 0;
+}
+
+.form-list::after {
+    bottom: 0;
+}
+
+.form-item {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    padding: 24rpx 0;
+    background-color: #fff;
+    padding-left: 27rpx;
+}
+
+.form-item::before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 99;
+    left: 0;
+    top: 0;
+    height: 1px;
+    width: 100%;
+    transform: scaleY(.5);
+    background-color: #e3e3e3;
+}
+
+.form-item-hd {
+    width: 160rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 30rpx;
+    padding-left: 6rpx;
+    color: #555;
+}
+
+.form-item-bd {
+    flex: 1;
+    height: 60rpx;
+    position:absolute;
+    left:190rpx;
+    right:27rpx;
+}
+.form-item-bd>input {
+  color: #555;
+}
+input, .input {
+    box-sizing: border-box;
+    height: 60rpx;
+    line-height: 60rpx;
+    background-color: #fff;
+    padding: 0;
+    font-size: 30rpx;
+    width: 100%;
+}
+
+switch {
+    position: absolute;
+    right: 40rpx;
+    top: 50%;
+    margin-right: -10rpx;
+    margin-top: -16px;
+    transform: scale(0.9);
+    transform-origin: right center;
+}
+.input-forget {
+  margin-right: 6rpx;
+}
+.input-placeholder {
+    color: #999;
+}
+button::after {
+  border: 0;
+}
+.message {
+    position: fixed;
+    top: 80%;
+    left: 50%;
+    width: 360rpx;
+    height: 66rpx;
+    margin-left: -200rpx;
+    background-color: rgba(0, 0, 0, .6);
+    border-radius: 15px;
+    text-align: center;
+    line-height: 66rpx;
+    color: #fff;
+    opacity: 0;
+    font-size: 32rpx;
+}
+
+.fade-in {
+    animation: fadeIn .3s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+.hidden {
+    display: none;
+}
+picker .input {
+  font-weight: normal;
+  color: #555;
+  overflow: hidden;
+  font-size: 30rpx;
+}
+.nextStep-btn {
+  width: 94%;
+  color: rgba(255,255,255,.9);
+  margin-top: 42rpx;
+}
+.form-aggree {
+  margin: 10rpx 24rpx 20rpx 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.form-aggree>view>checkbox {
+  transform:scale(.8);
+  -webkit-transform: scale(.8);
+}
+.form-aggree>view {
+  display: inline-block;
+}
+.form-aggree>view>text {
+  font-size: 30rpx;
+  color: #555;
+}
+.form-aggree>view>text:nth-of-type(2) {
+  color: blue;
+}
+.form-aggree>text {
+  font-size: 30rpx;
+  color: #555;
+  text-decoration: underline;
+}
+.form-item-code {
+  right: 260rpx;
+}
+.code-wrapper {
+  position: absolute;
+  right: 24rpx;
+  background-color: #32cd32;
+  width: 180rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60rpx;
+  border-radius: 10rpx;
+}
+.code-wrapper>text {
+  font-size: 32rpx;
+  color: #fff;
+}
+.code-wrapper.active {
+  opacity: .5;
+}
+.radio>radio {
+  transform: scale(.8)
+}
+.radio {
+  font-size: 30rpx;
+  color: #555;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.radio:first-child {
+  margin-right: 30rpx;
+}
+.form-item-invitationCode {
+  right: 120rpx;
+}
+/* 邀请码提示 */
+.invitationCode-tip {
+  position:absolute;
+  right:24rpx;
+  width:80rpx;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:60rpx;
+}
+.invitationCode-tip>image {
+  width: 50rpx;
+  height: 50rpx;
+}
+/* 注册提示 */
+.register-tip {
+  font-size: 27rpx;
+  color: #ff0000;
+  padding: 0 30rpx;
+  margin-bottom: 20rpx;
+}

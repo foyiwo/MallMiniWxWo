@@ -1,0 +1,20 @@
+<!--index.wxml-->
+<view class="search-container">
+  <view class='search-header'>
+    <view class='input-container'>
+      <input type='text' placeholder='请输入搜索关键词' focus bindinput='bindSearchContent' confirm-type="search" bindconfirm="tapSearch"/>
+      <icon type="search" bindtap='tapSearch'/>
+    </view>
+  </view>
+  <view style='height: 120rpx;'/>
+  <view class='search-hot-warpper'>
+    <view class='hot-title'>
+      <text class='theme-txr'>热门搜索：</text>
+    </view>
+    <block wx:for="{{hotDatas}}" wx:key="key" wx:for-index="index">
+      <view class='hot-item' bindtap='tapHotSearch' data-content="{{item}}">
+        <text>{{item}}</text>
+      </view>
+    </block>
+  </view>
+</view>

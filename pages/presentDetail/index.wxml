@@ -1,0 +1,48 @@
+<view class='presentDetail-container'>
+  <view class='present-amout'>
+    <text>提现金额</text>
+    <text class='theme-txr'>{{presentDetail.amount}}</text>
+  </view>
+  <view class='present-wrapper'>
+    <view>
+      <text>订 单 号：</text>
+      <text>{{presentDetail.order_sn}}</text>
+    </view>
+    <view>
+      <text>积 分：</text>
+      <text>{{presentDetail.integral}}</text>
+    </view>
+    <view>
+      <text>比  率：</text>
+      <text>{{presentDetail.rate}}</text>
+    </view>
+    <view>
+      <text>交易类型：</text>
+      <text>{{presentDetail.type}}</text>
+    </view>
+    <view>
+      <text>账  号：</text>
+      <text>{{presentDetail.account}}</text>
+    </view>
+    <view>
+      <text>状  态：</text>
+      <text>{{presentDetail.status}}</text>
+    </view>
+    <view>
+      <text>提现时间：</text>
+      <text>{{presentDetail.add_time}}</text>
+    </view>
+    <view>
+      <text>账户名字：</text>
+      <text>{{presentDetail.name}}</text>
+    </view>
+    <view>
+      <text>银行名称：</text>
+      <text>{{presentDetail.bank}}</text>
+    </view>
+    <view>
+      <text>状 态 名：</text>
+      <text>{{presentDetail.status_name}}</text>
+    </view>
+  </view>
+</view>

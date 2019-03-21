@@ -1,0 +1,53 @@
+  <form bindsubmit="updataSave">
+    <view class="form-list">
+      <view class="form-item">
+          <view class="form-item-hd">公司名称：</view>
+          <view class="form-item-bd">
+              <input type="text" placeholder-class="input-placeholder" name="company" placeholder="请输入公司名称" maxlength="11" value="{{personData.company}}"/>
+          </view>
+      </view>
+      <view class="form-item">
+          <view class="form-item-hd">联系人：</view>
+          <view class="form-item-bd">
+              <input type="text" placeholder-class="input-placeholder" name="contacts" placeholder="请输入联系人" maxlength="11" value="{{personData.contact}}"/>
+          </view>
+      </view>
+      <view class="form-item">
+          <view class="form-item-hd">手机：</view>
+          <view class="form-item-bd">
+              <input type="text" placeholder-class="input-placeholder" name="phone" value="{{personData.phone}}" maxlength="11"/>
+          </view>
+      </view>
+      <view class="form-item">
+          <view class="form-item-hd">区域：</view>
+          <view class="form-item-bd">
+              <picker bindchange="changeProvince" mode="selector" range="{{provinceName}}" value="{{provinceSelIndex}}" disabled='{{personData.bind_area==1}}'>
+                  <view class="input {{!provinceName[provinceSelIndex] ? 'input-placeholder' : ''}}">{{provinceName[provinceSelIndex] || '省份'}}</view>
+                  <input type="text" name="province" value="{{provinceName[provinceSelIndex]}}" class="hidden"/>
+              </picker>
+              <picker bindchange="changeCity" mode="selector" range="{{cityName}}" value="{{citySelIndex}}" disabled="{{!cityEnabled||personData.bind_area==1}}">
+                  <view class="input {{!cityName[citySelIndex] ? 'input-placeholder' : ''}}">{{cityName[citySelIndex] || '城市'}}</view>
+                  <input type="text" name="city" value="{{cityName[citySelIndex]}}" class="hidden"/>
+              </picker>
+              <picker bindchange="changeDistrict" mode="selector" range="{{districtName}}" value="{{districtSelIndex}}" disabled="{{!districtEnabled||personData.bind_area==1}}" wx:if="{{districtName.length > 0}}">
+                  <view class="input {{!districtName[districtSelIndex] ? 'input-placeholder' : ''}}">{{districtName[districtSelIndex] || '区县'}}</view>
+                  <input type="text" name="district" value="{{districtName[districtSelIndex]}}" class="hidden"/>
+              </picker>
+          </view>
+      </view>
+      <view class="form-item">
+          <view class="form-item-hd form-item-btn-title">营业执照照片：</view>
+          <view class="form-item-btn" bindtap='tapUpload' data-index="1">
+            <text>上传图片</text>
+          </view>
+      </view>
+      <view class="form-item">
+          <view class="form-item-hd form-item-btn-title">门头照片：</view>
+          <view class="form-item-btn" bindtap='tapUpload' data-index="2">
+            <text>上传图片</text>
+          </view>
+      </view>
+    </view>
+    <text class='tip-text'>*部分手机不支持图片上传功能,请前往电脑端操作</text>
+    <button formType="submit" class="nextStep-btn">确认修改</button>
+</form>

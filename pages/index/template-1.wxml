@@ -1,0 +1,42 @@
+<!-- 限时特价 -->
+<view class="index-temp-1">
+
+  <import src="../template-list/index.wxml"/>
+  <!-- 我的关注 -->
+  <view class='my-attention-wrapper' hidden='{{categoryDatas.length < 0}}'>
+    <block wx:for="{{categoryDatas}}" wx:key="key" wx:for-index="index">
+      <view class='mt-attention-item' bindtap='tapAttention' data-id="{{item.cat_id}}">
+        <view>
+          <image src="{{item.cat_img}}"/>
+        </view>
+        <text>
+          {{item.cat_name}}
+        </text>
+      </view>
+    </block>
+  </view>
+  <!-- 精品推荐 -->
+  <view class='index-goods'>
+    <view class='index-goods-title'>
+      <view class='index-title-before theme-bgr'/>
+      <text>精品推荐</text>
+    </view>
+    <template is="goods-list-{{listTemplate}}" data="{{...bestGoodsData}}"/>
+  </view> 
+  <!-- 热销产品 -->
+  <view class='index-recommend'>
+    <view class='index-goods-title'>
+      <view class='index-title-before theme-bgr'/>
+      <text>热销产品</text>
+    </view>
+    <template is="goods-list-{{listTemplate}}" data="{{...hotGoodsData}}"/>
+  </view> 
+  <!-- 新品上架 -->
+  <view class='index-recommend'>
+    <view class='index-goods-title'>
+      <view class='index-title-before theme-bgr'/>
+      <text>新品上架</text>
+    </view>
+    <template is="goods-list-{{listTemplate}}" data="{{...newGoodsData}}"/>
+  </view>
+</view>

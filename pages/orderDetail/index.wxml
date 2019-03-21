@@ -1,0 +1,150 @@
+<!--index.wxml-->
+<view class="orderDetail-container" hidden='{{isLoading}}'>
+  <view class='order-info'>
+    <view>
+      <text>订单状态：</text>
+      <text>{{order.order_status+' '+order.pay_status+' '+order.shipping_status}}</text>
+    </view>
+    <view>
+      <text>订单号：</text>
+      <text>{{order.order_sn }}</text>
+    </view>
+    <view>
+      <text>订单总金额：</text>
+      <text>{{order.formated_order_amount}}</text>
+    </view>
+    <view>
+      <text>下单时间：</text>
+      <text>{{order.formated_add_time}}</text>
+    </view>
+  </view>
+  <view class='wechat-pay' wx:if='{{order.order_status_id!=2&&order.pay_id=="4"&&order.pay_status_id=="0"}}' bindtap='bindPay' hidden='{{false}}'>
+    <text>微信支付</text>
+  </view>
+  <block wx:for="{{goodsList}}" wx:key="key" wx:for-index="index">
+    <view class='goods-item' bindtap='tapGoods' data-id="{{item.goods_id}}">
+      <view class='item-left'>
+        <image src='{{item.goods_thumb}}'/>
+      </view>
+      <view class='item-right'>
+        <view class='goods-name'>
+          <text>{{item.goods_name}}</text>
+        </view>
+        <view class='goods-info'>
+          <text>本店售价：</text>
+          <text>{{item.goods_price}}</text>
+          <text> 数量：</text>
+          <text>{{item.goods_number}}</text>
+        </view>
+        <view class='goods-count'>
+          <text>小计：</text>
+          <text class='theme-txr'>{{item.subtotal}}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+  <!-- 取消订单 -->
+  <block wx:if="{{order.order_status_id=='0'}}">
+    <view class='cancle_btn' bindtap='cancleOrder'>
+      <text>取消订单</text>
+    </view>
+  </block>
+  <!-- 确认收货 -->
+  <block wx:elif="{{order.order_status_id=='1'&&order.shipping_status_id=='1'}}">
+    <view class='cancle_btn' bindtap='confirmGoodsReceipt'>
+      <text>确认收货</text>
+    </view>
+  </block>
+  <block wx:else>
+    <view class='cancle_btn'>
+      <text>{{order.order_status_id=='1'&&order.shipping_status_id=='2'?'已完成':order.order_status}}</text>
+    </view>
+  </block>
+  <view class='userInfo-wrapper'>
+    <view class='userInfo-item'>
+      <text>收货人姓名:</text>
+      <text>{{order.consignee}}</text>
+    </view>
+    <view class='userInfo-item'>
+      <text>手机:</text>
+      <text>{{order.mobile}}</text>
+    </view>
+    <view class='userInfo-item address-item'>
+      <text>详细地址:</text>
+      <text>{{order.address}}</text>
+    </view>
+    <view class='userInfo-item' hidden='{{order.best_time==""}}'>
+      <text>最佳送货时间:</text>
+      <text>{{order.best_time}}</text>
+    </view>
+  </view>
+  <view class='goodsPrice-wrapper'>
+    <view class='goodsPrice-top'>
+      <text>商品总价：</text>
+      <text class='theme-txr'>{{order.formated_goods_amount }}</text>
+      <text> - 折扣：</text>
+      <text class='theme-txr'>{{order.formated_discount}}</text>
+    </view>
+    <view class='goodsPrice-bottom' hidden='{{order.tax=="0.00"}}'>
+      <text>+发票税额：</text>
+      <text class='theme-txr'>{{order.formated_tax}}</text>
+    </view>
+    <view class='goodsPrice-bottom' hidden='{{order.shipping_fee=="0.00"}}'>
+      <text>+运费</text>
+      <text class='theme-txr'>{{order.formated_shipping_fee}}</text>
+    </view>
+    <view class='goodsPrice-bottom' hidden='{{order.pay_fee=="0.00"}}'>
+      <text>+手续费</text>
+      <text class='theme-txr'>{{order.formated_pay_fee}}</text>
+    </view>
+    <view class='goodsPrice-bottom'>
+      <text>应付款金额：</text>
+      <text class='theme-txr'>{{order.formated_order_amount}}</text>
+    </view>
+  </view>
+  <view class='payment-warpper'>
+    <view class='payment-item'>
+      <text>所选支付方式：</text>
+      <text>{{order.pay_name}}</text>
+    </view>
+    <view class='payment-item payment-money'>
+      <text>应付款金额：</text>
+      <text class='theme-txr'>{{order.formated_order_amount}}</text>
+    </view>
+    <view class='payment-detail' hidden='{{!payDesc}}'>
+      <text>{{payDesc}}</text>
+    </view>
+  </view>
+  <!-- 付款方式改变 -->
+  <view class='payment-change'>
+    <block wx:if="{{false}}">
+      <view class='change-title'>
+        <text>改用其他在线支付方式：</text>
+      </view>
+      <view class='change-item'>
+        <text>微信支付(手续费:0.6%)</text>
+      </view>
+      <view class='payment-true'>
+        <text>确定</text>
+      </view>
+    </block>
+  </view>
+  <view class='userInfo-wrapper'>
+    <view class='userInfo-item'>
+      <text>配送方式:</text>
+      <text>{{order.shipping_name}}</text>
+    </view>
+    <view class='userInfo-item'>
+      <text>支付方式:</text>
+      <text>{{order.pay_name}}</text>
+    </view>
+    <view class='userInfo-item address-item' hidden='{{order.postscript==""}}'>
+      <text>订单附言:</text>
+      <text>{{order.postscript}}</text>
+    </view>
+    <view class='userInfo-item address-item'>
+      <text>缺货处理:</text>
+      <text>{{order.how_oos_name}}</text>
+    </view>
+  </view>
+</view>

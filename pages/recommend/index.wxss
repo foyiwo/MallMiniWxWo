@@ -1,0 +1,87 @@
+.recommend-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 8;
+}
+.recommend-card {
+  position: absolute;
+  background-color: #fff;
+  width: 86%;
+  margin-left: 7%;
+  border-radius: 8rpx;
+  top: 100rpx;
+}
+.recommend-img-container {
+  margin-top: 32rpx;
+  width: 94%;
+  margin-left: 3%;
+}
+.recommend-img-container>image {
+  width: 30%;
+  margin-left: 35%;
+}
+.recommend-img-container>image.active {
+  width: 100%;
+  margin: auto;
+}
+.recommend-userinfo {
+  height: 150rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.user-headimg {
+  width: 106rpx;
+  height: 106rpx;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 36rpx;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, .3);
+}
+.user-headimg>image {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 100%;
+}
+.recommend-userinfo>text {
+  font-size: 36rpx;
+  color: #555;
+  margin-left: 27rpx;
+}
+.recommend-tip {
+  width: 100%;
+  margin: 36rpx auto;
+  text-align: center;
+}
+.recommend-tip>text {
+  font-size: 36rpx;
+  color: #555
+}
+.recommend-save{
+  position: absolute;
+  z-index: 99;
+  width: 66%;
+  left: 18%;
+  height: 90rpx;
+  bottom: -160rpx;
+  background-color: #32cd32;
+  border-radius: 50rpx;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+}
+.recommend-save>text {
+  font-size: 36rpx;
+  line-height: 90rpx;
+  color: #fff;
+}
+button[type="primary"][plain]  {
+  background-color: #32cd32;
+  border: none;
+}

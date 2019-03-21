@@ -1,0 +1,19 @@
+<view class='recommend-container theme-bgr'>
+  <view class='recommend-card' id="card">
+    <view class='recommend-userinfo'>
+      <view class='user-headimg'>
+         <image src='{{userInfo.avatarUrl}}' /> 
+      </view>
+      <text>{{userInfo.userName}}</text>
+    </view>
+    <view class='recommend-img-container'>
+        <image src='{{codeImage?"data:image/png;base64,"+codeImage:"/images/svg/loading.svg"}}' mode='aspectFit' class='{{codeImage?"active":""}}'/>
+    </view>
+    <view class='recommend-tip'>
+      <text>长按小程序码识别</text>
+    </view>
+    <button class='recommend-save' id="shareBtn" open-type="share" type="primary" plain>
+      <text>分享给好友</text>
+    </button>
+  </view>
+</view>

@@ -1,0 +1,34 @@
+<view class="address-list" style='margin-bottom:{{isIPhoneX?"120rpx":"100rpx"}}'>
+  <block wx:if="{{!isLoading}}">
+    <block wx:if="{{addressList.length > 0}}">
+      <radio-group class="radio-group" bindchange="radioChange">
+        <view class="a-address"  wx:for-items="{{addressList}}" wx:key="key">
+          <view class='radio-wrapper'>
+            <radio checked="{{item.is_default==1}}" value="{{item.address_id}}"/>
+          </view> 
+          <view class="left-text" bindtap="selectTap" data-id="{{item.address_id}}" data-index="{{index}}">
+              <view class="name-tel">
+                <text>{{item.consignee}}</text>
+                <text class='theme-txr'>{{item.mobile}}</text>
+              </view>
+              <view class="address-box">
+                <text>{{item.address}}</text>
+              </view>     
+          </view>
+          <view class='right-arrow'>
+            <image src='/images/svg/arrow-right.svg'/>   
+          </view>
+        </view>
+      </radio-group>
+    </block>
+    <block wx:else>
+      <view class="address-empty">
+        <image src='/images/svg/address.svg'/>
+        <text>您还没有收货地址呦......</text>
+      </view>
+    </block>
+  </block>
+</view>
+<view class='bottom-box {{isIPhoneX?"iphonex":""}}'>
+  <text bindtap="addAddess">+ 添加收货地址</text>
+</view>

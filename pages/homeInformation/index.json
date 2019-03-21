@@ -1,0 +1,7 @@
+{
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "light",
+  "navigationBarTitleText": "下家信息",
+  "navigationBarBackgroundColor": "#b22",
+  "navigationBarTextStyle": "white"
+}

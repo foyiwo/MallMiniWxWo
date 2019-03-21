@@ -1,0 +1,39 @@
+<!--index.wxml-->
+<view class="allOrder-container">
+<block wx:if="{{!isLoading}}">
+  <block wx:if="{{orderList.length > 0}}">
+    <block wx:for="{{orderList}}" wx:key="key" wx:for-index="index">
+      <view class='allOrder-item' bindtap='tapOrder' data-id="{{item.order_id}}">
+        <view class='item-left'>
+          <image src='{{item.img}}' binderror='imgLoadError' data-index="{{index}}"/>
+        </view>
+        <view class='item-right'>
+          <view class='order-no'>
+            <text class='theme-txr'>订单号：{{item.order_sn}}</text>
+          </view>
+          <view class='order-state'>
+            <text>订单状态：{{item.order_status}}</text>
+          </view>
+          <view class='order-price'>
+            <text>订单总金额：</text>
+            <text class='theme-txr active'>{{item.total_fee}}</text>
+          </view>
+          <view class='order-time'>
+            <text>下单时间：{{item.order_time}}</text>
+          </view>
+          <image src='/images/svg/arrow-right.svg'/>
+        </view>
+      </view>
+    </block>
+    <view class='foot-tip' wx:if="{{footState!=0}}">
+      <image src='/images/svg/loading.svg' wx:if="{{footState==2}}"/>
+      <text>{{footState==1?"没有更多了":footState==2?"加载中...":""}}</text>
+    </view>
+  </block>
+  <block wx:else>
+    <view class='empty-order'>
+      <text>暂无订单...</text>
+    </view>
+  </block>
+</block>
+</view>

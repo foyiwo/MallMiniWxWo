@@ -1,0 +1,7 @@
+{
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "navigationBarTitleText": "积分管理",
+  "navigationBarBackgroundColor": "#b22",
+  "navigationBarTextStyle": "white"
+}
